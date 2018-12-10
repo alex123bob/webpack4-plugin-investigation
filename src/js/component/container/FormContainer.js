@@ -2,6 +2,11 @@ import React, { Component } from 'react'
 import Input from '../presentational/Input'
 
 class FormContainer extends Component {
+    static getDerivedStateFromProps (){
+        console.log('getDerivedStateFromProps')
+        return null
+    }
+
     constructor() {
         super()
 
@@ -18,7 +23,17 @@ class FormContainer extends Component {
         })
     }
 
+    getSnapshotBeforeUpdate(prevProps, prevState) {
+        console.log('getSnapShotBeforeUpdate')
+        return null
+    }
+
+    componentDidUpdate(prevProps, prevState, snapshot) {
+        console.log('componentDidUpdate', prevProps, prevState, snapshot)
+    }
+
     render() {
+        console.log('render')
         const {seo_title} = this.state
         return (
             <form id="active-form">
