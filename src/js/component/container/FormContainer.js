@@ -1,5 +1,8 @@
 import React, { Component } from 'react'
 import Input from '../presentational/Input'
+import * as context from '../context/InputContext'
+
+let InputContext = context.InputContext
 
 class FormContainer extends Component {
     static getDerivedStateFromProps (){
@@ -36,16 +39,18 @@ class FormContainer extends Component {
         console.log('render')
         const {seo_title} = this.state
         return (
-            <form id="active-form">
-                <Input
-                    text="SEO title"
-                    label="seo_title"
-                    type="text"
-                    id="seo_title"
-                    value={seo_title}
-                    handleChange={this.handleChange}
-                />
-            </form>
+            <InputContext.Provider value={{backgroundColor: 'green'}}>
+                <form id="active-form">
+                    <Input
+                        text="SEO title"
+                        label="seo_title"
+                        type="text"
+                        id="seo_title"
+                        value={seo_title}
+                        handleChange={this.handleChange}
+                    />
+                </form>
+            </InputContext.Provider>
         )
     }
 }
